@@ -19,7 +19,7 @@ public class PacienteModel {
 
     private String telefone;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String cpf;
 
     private BigDecimal altura;

@@ -5,6 +5,9 @@ import com.NutriAPI.API_Nutri.model.PacienteModel;
 import com.NutriAPI.API_Nutri.repository.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 //import java.util.List;
 
 @Service
@@ -16,8 +19,17 @@ public class PacienteService {
 
     @Autowired
     private PacienteRepository usuarioRepository;
+
     public PacienteModel cadastrarUsuario(PacienteModel paciente) {
         return (PacienteModel) usuarioRepository.save(paciente);
+    }
+
+    public List<PacienteModel> listarUsuarios() {
+        return usuarioRepository.findAll();
+    }
+
+    public Optional<PacienteModel> buscarPorCpf(String cpf) {
+        return usuarioRepository.findByCpf(cpf);
     }
 
 }
