@@ -58,16 +58,19 @@ public class PacienteController {
         }
     }
 
+    @DeleteMapping("/cpf/{cpf}")
+    public ResponseEntity<String> deletarPacientePorCpf(@PathVariable String cpf) {
+        String response = pacienteService.deletarPacienteCpf(cpf);
+
+        if (response.contains("deletado")) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        }
+    }
 
 
 
-
-
-
-   // @PostMapping
-   // public String helloPost(@RequestBody String name){
-    //    return pacienteService.hello(name);
-    //}
     //@PathVariable
     //@RequestParam
 
