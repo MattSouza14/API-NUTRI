@@ -1,30 +1,50 @@
 package com.NutriAPI.API_Nutri.model;
 
 import jakarta.persistence.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 @Entity
 @Table(name = "usuarios")
-public class PacienteModel {
+public class PacienteModel implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, length = 100)
+    private String nome;
+
+    @Column(nullable = false, unique = true , length = 100)
     private String email;
 
-    @Column(nullable = false)
+    @Column(nullable = false , length = 100)
     private String senha;
 
+    @Column
     private String telefone;
+
+    @Column
+    private String genero;
 
     @Column(unique = true, nullable = false)
     private String cpf;
 
+    @Column
     private BigDecimal altura;
 
+    @Column
     private BigDecimal peso;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
     public Long getId() {
         return id;
@@ -32,6 +52,14 @@ public class PacienteModel {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 
     public String getEmail() {

@@ -3,8 +3,10 @@ package com.NutriAPI.API_Nutri.controller;
 import com.NutriAPI.API_Nutri.model.PacienteModel;
 import com.NutriAPI.API_Nutri.services.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -60,14 +62,34 @@ public class PacienteController {
 
     @DeleteMapping("/cpf/{cpf}")
     public ResponseEntity<String> deletarPacientePorCpf(@PathVariable String cpf) {
-        String response = pacienteService.deletarPacienteCpf(cpf);
+        String pacienteDeletado = pacienteService.deletarPacienteCpf(cpf);
 
-        if (response.contains("deletado")) {
-            return new ResponseEntity<>(response, HttpStatus.OK);
+        if (pacienteDeletado.contains("deletado")) {
+            return new ResponseEntity<>(pacienteDeletado, HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(pacienteDeletado, HttpStatus.NOT_FOUND);
         }
     }
+
+    @PatchMapping("/paciente/{cpf}")
+    public ResponseEntity<String> atualizarCamposPaciente(@PathVariable String cpf, @RequestBody PacienteModel novosDados) {
+        String mensagem = pacienteService.atualizarCamposPaciente(cpf, novosDados);
+        if (mensagem.contains("atualizados")) {
+            return ResponseEntity.ok(mensagem);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(mensagem);
+        }
+    }
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody PacienteModel credenciais) {
+        try {
+            String token = pacienteService.autenticarUsuario(credenciais.getCpf(), credenciais.getSenha());
+            return ResponseEntity.ok("Bearer " + token);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
+        }
+    }
+
 
 
 
