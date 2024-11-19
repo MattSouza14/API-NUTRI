@@ -1,13 +1,11 @@
 package com.NutriAPI.API_Nutri.services;
 
-import com.NutriAPI.API_Nutri.util.JwtUtil;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import org.springframework.stereotype.Service;
 import com.NutriAPI.API_Nutri.model.PacienteModel;
 import com.NutriAPI.API_Nutri.repository.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -23,16 +21,20 @@ public class PacienteService {
 
     @Autowired
     private PacienteRepository usuarioRepository;
-    private BCryptPasswordEncoder bCryptPassword;
+   // private BCryptPasswordEncoder bCryptPassword;
 
     public PacienteModel cadastrarUsuario(PacienteModel paciente) {
-        String senhaCriptografada = bCryptPassword.encode(paciente.getSenha());
-        paciente.setSenha(senhaCriptografada);
+        return (PacienteModel) usuarioRepository.save(paciente);
+    }
+    /*public PacienteModel cadastrarUsuario(PacienteModel paciente) {
+       // String senhaCriptografada = bCryptPassword.encode(paciente.getSenha());
+       // paciente.setSenha(senhaCriptografada);
 
         return usuarioRepository.save(paciente);
-    }
+    }*/
 
-    private JwtUtil jwtUtil;
+
+   /* private JwtUtil jwtUtil;
 
     public String autenticarUsuario(String cpf, String senha) {
         Optional<PacienteModel> paciente = usuarioRepository.findByCpf(cpf);
@@ -41,7 +43,7 @@ public class PacienteService {
         } else {
             throw new RuntimeException("Credenciais inválidas.");
         }
-    }
+    }*/
 
     public List<PacienteModel> listarUsuarios() {
         return usuarioRepository.findAll();

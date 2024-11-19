@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -60,6 +60,7 @@ public class PacienteController {
         }
     }
 
+
     @DeleteMapping("/cpf/{cpf}")
     public ResponseEntity<String> deletarPacientePorCpf(@PathVariable String cpf) {
         String pacienteDeletado = pacienteService.deletarPacienteCpf(cpf);
@@ -80,7 +81,7 @@ public class PacienteController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(mensagem);
         }
     }
-    @PostMapping("/login")
+    /*@PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody PacienteModel credenciais) {
         try {
             String token = pacienteService.autenticarUsuario(credenciais.getCpf(), credenciais.getSenha());
@@ -88,7 +89,7 @@ public class PacienteController {
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
         }
-    }
+    }*/
 
 
 

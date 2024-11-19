@@ -1,14 +1,14 @@
 package com.NutriAPI.API_Nutri.model;
 
 import jakarta.persistence.*;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 @Entity
 @Table(name = "usuarios")
 public class PacienteModel implements Serializable {
-    private static final long serialVersionUID = 1L;
+   // private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,10 +23,10 @@ public class PacienteModel implements Serializable {
     @Column(nullable = false , length = 100)
     private String senha;
 
-    @Column
+    @Column(nullable = true , length = 100)
     private String telefone;
 
-    @Column
+    @Column(nullable = false , length = 100)
     private String genero;
 
     @Column(unique = true, nullable = false)
