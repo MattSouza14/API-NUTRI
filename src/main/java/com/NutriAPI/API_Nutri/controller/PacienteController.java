@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -81,8 +82,8 @@ public class PacienteController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(mensagem);
         }
     }
-    /*@PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody PacienteModel credenciais) {
+    /* @PostMapping("/login")
+   public ResponseEntity<String> login(@RequestBody PacienteModel credenciais) {
         try {
             String token = pacienteService.autenticarUsuario(credenciais.getCpf(), credenciais.getSenha());
             return ResponseEntity.ok("Bearer " + token);
@@ -91,7 +92,26 @@ public class PacienteController {
         }
     }*/
 
-
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody Map<String, String> loginData) {
+        try {
+            String email = loginData.get("email");
+            String senha = loginData.get("senha");
+            Optional<PacienteModel> pacienteOpt = pacienteService.buscarPorEmail(email);
+            if (pacienteOpt.isPresent()) {
+                PacienteModel paciente = pacienteOpt.get();
+                if (paciente.getSenha().equals(senha)) {
+                    return ResponseEntity.ok("Login realizado com sucesso!");
+                } else {
+                    return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Senha incorreta.");
+                }
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado.");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao realizar login.");
+        }
+    }
 
 
     //@PathVariable

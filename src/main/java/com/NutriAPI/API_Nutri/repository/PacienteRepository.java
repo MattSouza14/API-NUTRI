@@ -8,6 +8,10 @@ import java.util.Optional;
 @Repository
 public interface PacienteRepository  extends  JpaRepository<PacienteModel, Long>{
 
+
     Optional<PacienteModel> findByCpf(String cpf);
+
+    Optional<PacienteModel> findByEmail(String email);
+
 
 }

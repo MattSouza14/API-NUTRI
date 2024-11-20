@@ -99,7 +99,9 @@ public class PacienteService {
         }
     }
 
-
+    public Optional<PacienteModel> buscarPorEmail(String email) {
+        return usuarioRepository.findByEmail(email);
+    }
 
     }
 
