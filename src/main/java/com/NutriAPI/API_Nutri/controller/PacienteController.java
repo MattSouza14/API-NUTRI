@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping//endpoint
-
+@CrossOrigin(origins = {"http://localhost:3000", "http://10.0.2.2:3000"})
 public class PacienteController {
 
     @Autowired
