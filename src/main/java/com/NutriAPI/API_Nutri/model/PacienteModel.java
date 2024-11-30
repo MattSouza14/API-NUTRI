@@ -26,17 +26,17 @@ public class PacienteModel implements Serializable {
     @Column(nullable = true , length = 100)
     private String telefone;
 
-    @Column(nullable = false , length = 100)
-    private String genero;
+   // @Column(nullable = false , length = 100)
+   // private String genero;
 
     @Column(unique = true, nullable = false)
     private String cpf;
 
-    @Column
-    private BigDecimal altura;
+   // @Column
+   // private BigDecimal altura;
 
-    @Column
-    private BigDecimal peso;
+   // @Column
+   // private BigDecimal peso;
 
     public String getNome() {
         return nome;
@@ -54,13 +54,13 @@ public class PacienteModel implements Serializable {
         this.id = id;
     }
 
-    public String getGenero() {
+   /** public String getGenero() {
         return genero;
     }
 
     public void setGenero(String genero) {
         this.genero = genero;
-    }
+    }**/
 
     public String getEmail() {
         return email;
@@ -94,7 +94,7 @@ public class PacienteModel implements Serializable {
         this.cpf = cpf;
     }
 
-    public BigDecimal getAltura() {
+  /**  public BigDecimal getAltura() {
         return altura;
     }
 
@@ -108,5 +108,5 @@ public class PacienteModel implements Serializable {
 
     public void setPeso(BigDecimal peso) {
         this.peso = peso;
-    }
+    }**/
 }

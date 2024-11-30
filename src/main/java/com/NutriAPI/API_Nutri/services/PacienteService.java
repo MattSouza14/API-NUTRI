@@ -74,15 +74,6 @@ public class PacienteService {
             if (novosDados.getCpf() != null) {
                 paciente.setCpf(novosDados.getCpf());
             }
-            if (novosDados.getGenero() != null) {
-                paciente.setGenero(novosDados.getGenero());
-            }
-            if (novosDados.getAltura() != null) {
-                paciente.setAltura(novosDados.getAltura());
-            }
-            if (novosDados.getPeso() != null) {
-                paciente.setPeso(novosDados.getPeso());
-            }
             if (novosDados.getEmail() != null) {
                 paciente.setEmail(novosDados.getEmail());
             }
