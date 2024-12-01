@@ -22,7 +22,7 @@ A API está disponível nos seguintes domínios para permitir requisições cros
     "nome": "João Silva",
     "cpf": "123.456.789-00",
     "email": "joao@email.com",
-    "dataNascimento": "1990-01-01",
+    "telefone": "1234-5678",
     "senha": "senha123"
   },
   {
@@ -30,7 +30,7 @@ A API está disponível nos seguintes domínios para permitir requisições cros
     "nome": "Maria Oliveira",
     "cpf": "987.654.321-00",
     "email": "maria@email.com",
-    "dataNascimento": "1985-05-12",
+    "telefone": "1234-5678",
     "senha": "senha456"
   }
 ]
@@ -52,7 +52,7 @@ A API está disponível nos seguintes domínios para permitir requisições cros
   "nome": "João Silva",
   "cpf": "123.456.789-00",
   "email": "joao@email.com",
-  "dataNascimento": "1990-01-01",
+  "telefone": "1234-5678",
   "senha": "senha123"
 }
 ```
@@ -70,7 +70,7 @@ A API está disponível nos seguintes domínios para permitir requisições cros
   "nome": "João Silva",
   "cpf": "123.456.789-00",
   "email": "joao@email.com",
-  "dataNascimento": "1990-01-01",
+  "telefone": "1234-5678",
   "senha": "senha123"
 }
 ```
@@ -81,7 +81,7 @@ A API está disponível nos seguintes domínios para permitir requisições cros
   "nome": "João Silva",
   "cpf": "123.456.789-00",
   "email": "joao@email.com",
-  "dataNascimento": "1990-01-01",
+  "telefone": "1234-5678",
   "senha": "senha123"
 }
 ```
